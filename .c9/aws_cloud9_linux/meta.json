@@ -1,0 +1,5 @@
+{
+  "id": "aws_cloud9_linux",
+  "configuration": "file:///home/ec2-user/environment/.c9",
+  "name": "aws_cloud9_linux"
+}
