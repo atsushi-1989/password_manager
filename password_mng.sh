@@ -10,3 +10,4 @@ read pass_word
 
 echo "Thank you!"
 
+echo "$service_name : $user_name : $pass_word" >>password_box.txt
