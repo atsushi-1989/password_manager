@@ -15,7 +15,13 @@ while :
             echo "パスワードを入力してください："
             read pass_word
             
+            gpg password_box.txt.gpg
+            
             echo "$service_name : $user_name : $pass_word" >>password_box.txt
+            
+            gpg -c password_box.txt
+            
+            rm password_box.txt
             
             echo "パスワードの追加は成功しました。"
             
@@ -28,6 +34,7 @@ while :
             echo "サービス名を入力してください："
             read service_name
             
+            gpg password_box.txt.gpg
             
             service=$(grep ${service_name} password_box.txt | cut -d ':' -f 1)
             user=$(grep ${service_name} password_box.txt | cut -d ':' -f 2)
@@ -37,16 +44,18 @@ while :
                 echo "サービス名：${service}"
                 echo "ユーザー名：${user}"
                 echo "パスワード：${pass}"
+                rm password_box.txt
                 
                 echo "次の選択肢から入力してください(Add Password/Get Password/Exit)："
                 read mode
                 
             else
+                rm password_box.txt
                 echo "そのサービスは登録されていません。"
                 echo "次の選択肢から入力してください(Add Password/Get Password/Exit)："
                 read mode
             fi
-            
+    
         
         elif [[ $mode = "Exit" ]];then
                 echo "Thank you!"
@@ -58,3 +67,5 @@ while :
         fi
     
     done
+    
+     
